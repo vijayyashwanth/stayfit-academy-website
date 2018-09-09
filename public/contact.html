@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stayfit Fitness Academy</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script/script.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>                        
+                    </button>
+                <a class="navbar-brand" href="#"><img src="assets/logo.png" alt=""></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="pricing" id="certification">
+        <div class="enquiryForm" style="margin-top:10rem">
+            <div class="formHead">
+                Apply Now!
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="fname">First Name</label>
+                    <input type="text" name="" id="fname">
+                    <label for="lname">Last Name</label>
+                    <input type="text" name="" id="lname">
+                    <label for="email">Email</label>
+                    <input type="email" name="" id="email">
+                    <label for="contact">Contact</label>
+                    <input type="text" name="" id="contact">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="isTrainer">Are you a trainer currently?</label>
+                    <select name="" id="isTrainer">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <label for="heardFrom">Where did you hear about stayfit academy?</label>
+                    <select name="" id="heardFrom">
+                        <option value="Social Media">Social Media</option>
+                        <option value="Word of Mouth">Word of Mouth</option>
+                        <option value="Banners">Banners</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <label for="email">What is you fitness level currently?</label>
+                    <select name="" id="fitnessLevel">
+                        <option value="beginner">Beginner</option>
+                        <option value="pro">Pro</option>
+                    </select>
+                    <label for="contact">what classes would you prefer to attend? </label>
+                    <select name="" id="classPreference">
+                        <option value="gym">Gym</option>
+                        <option value="groupex">GroupX</option>
+                        <option value="both">Both</option>
+                    </select>
+                </div>
+                <div class="col-md-6 col-md-offset-3">
+                    <input type="button" name="Submit" id="submit" value="Submit" onclick="submitForm()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="contactLogo">
+            <img src="assets/logo.png" alt="" srcset="">
+        </div>
+        <div class="contactRight">
+            <div class="socialMedia">
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/STAYFITFITNESSACADEMY/"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-google-plus"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="address">
+                Admission cell, Stayfit Fitness Academy<br> Bangalore – 560 041 <br> Phone: +91-8722072000, +91-8722073000 <br> Email: stayfit@stayfitindia.com
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Copyright© 2017 Stayfit. All Rights Reserved.
+    </div>
+</body>
+<script>
+    function submitForm() {
+        var firstName = document.getElementById('fname').value;
+        var lastName = document.getElementById('lname').value;
+        var email = document.getElementById('email').value;
+        var contactNo = document.getElementById('contact').value;
+        var isTrainer = true;
+        if (document.getElementById('isTrainer').value == "yes")
+            isTrainer = true
+        else isTrainer = false
+        var heardFrom = document.getElementById('heardFrom').value;
+        var fitnessLevel = document.getElementById('fitnessLevel').value;
+        var classPreference = document.getElementById('classPreference').value;
+        if (!firstName || !lastName || !email || !contactNo || !isTrainer || !heardFrom || !fitnessLevel || !classPreference) {
+            alert("All fields are manadatory.")
+        } else {
+            var formData = {
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email,
+                "contactNo": contactNo,
+                "isTrainer": isTrainer,
+                "heardFrom": heardFrom,
+                "fitnessLevel": fitnessLevel,
+                "classPreference": classPreference
+            }
+            console.log(formData.toString())
+            console.log(typeof(formData))
+            var settings = {
+                "url": "http://stayfitapp.k8iwjdfpvp.us-east-2.elasticbeanstalk.com/application",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "processData": false,
+                "data": JSON.stringify(formData)
+            }
+
+            $.ajax(settings).done(function(response) {
+                if (response == "OK") {
+                    alert("Form submission successful.")
+                    document.getElementById('fname').value = ''
+                    document.getElementById('lname').value = ''
+                    document.getElementById('email').value = ''
+                    document.getElementById('contact').value = ''
+                    document.getElementById('isTrainer').value = ''
+                    document.getElementById('heardFrom').value = ''
+                    document.getElementById('fitnessLevel').value = ''
+                    document.getElementById('classPreference').value = ''
+                } else("An error has occured.")
+            });
+        }
+    }
+</script>
+
+</html>
