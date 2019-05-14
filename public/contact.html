@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stayfit Fitness Academy</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="canonical" href="https://stayfitindia.com" />
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -13,6 +15,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/script.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122845976-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-122845976-3');
+    </script>
+
 </head>
 
 <body>
@@ -22,7 +34,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>                        
+                      <span class="icon-bar"></span>
                     </button>
                 <a class="navbar-brand" href="#"><img src="assets/logo.png" alt=""></a>
             </div>
@@ -92,73 +104,93 @@
                         <a target="_blank" href="https://www.facebook.com/STAYFITFITNESSACADEMY/"><i class="fa fa-facebook"></i></a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/STAYFITFITNESSACADEMY/"></a><i class="fa fa-twitter"></i></a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-google-plus"></i></a>
+                        <a target="_blank" href="https://www.facebook.com/STAYFITFITNESSACADEMY/"></a><i class="fa fa-google-plus"></i></a>
                     </li>
                 </ul>
             </div>
             <div class="address">
-                Admission cell, Stayfit Fitness Academy<br> Bangalore – 560 041 <br> Phone: +91-8722072000, +91-8722073000 <br> Email: stayfit@stayfitindia.com
+                Admission cell, Stayfit Fitness Academy<br>
+                Bangalore – 560 041 <br>
+                Phone: +91-8722072000, +91-8722073000 <br>
+                Email: stayfit@stayfitindia.com
             </div>
         </div>
     </div>
     <div class="footer">
-        Copyright© 2017 Stayfit. All Rights Reserved.
+        Copyright &copy; 2019 Stayfit. All Rights Reserved.
     </div>
 </body>
 <script>
+    $(document).ready(function () {
+        document.getElementById('fname').focus()
+    });
+
     function submitForm() {
         var firstName = document.getElementById('fname').value;
         var lastName = document.getElementById('lname').value;
         var email = document.getElementById('email').value;
         var contactNo = document.getElementById('contact').value;
-        var isTrainer = true;
-        if (document.getElementById('isTrainer').value == "yes")
-            isTrainer = true
-        else isTrainer = false
+        var isTrainer = document.getElementById('isTrainer').value == "yes"
         var heardFrom = document.getElementById('heardFrom').value;
         var fitnessLevel = document.getElementById('fitnessLevel').value;
         var classPreference = document.getElementById('classPreference').value;
         if (!firstName || !lastName || !email || !contactNo || !isTrainer || !heardFrom || !fitnessLevel || !classPreference) {
             alert("All fields are manadatory.")
+            document.getElementById('fname').focus()
         } else {
-            var formData = {
-                "firstName": firstName,
-                "lastName": lastName,
-                "email": email,
-                "contactNo": contactNo,
-                "isTrainer": isTrainer,
-                "heardFrom": heardFrom,
-                "fitnessLevel": fitnessLevel,
-                "classPreference": classPreference
-            }
-            console.log(formData.toString())
-            console.log(typeof(formData))
-            var settings = {
-                "url": "http://stayfitapp.k8iwjdfpvp.us-east-2.elasticbeanstalk.com/application",
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "processData": false,
-                "data": JSON.stringify(formData)
-            }
 
-            $.ajax(settings).done(function(response) {
-                if (response == "OK") {
-                    alert("Form submission successful.")
-                    document.getElementById('fname').value = ''
-                    document.getElementById('lname').value = ''
-                    document.getElementById('email').value = ''
-                    document.getElementById('contact').value = ''
-                    document.getElementById('isTrainer').value = ''
-                    document.getElementById('heardFrom').value = ''
-                    document.getElementById('fitnessLevel').value = ''
-                    document.getElementById('classPreference').value = ''
-                } else("An error has occured.")
-            });
+            window.setTimeout(function () {
+                document.getElementById('fname').value = ''
+                document.getElementById('lname').value = ''
+                document.getElementById('email').value = ''
+                document.getElementById('contact').value = ''
+                document.getElementById('isTrainer').value = ''
+                document.getElementById('heardFrom').value = ''
+                document.getElementById('fitnessLevel').value = ''
+                document.getElementById('classPreference').value = ''
+                alert("Thank you for your information.\n\nWe will get in touch with you soon.")
+            }, 750);
+
+            // var formData = {
+            //     "firstName": firstName,
+            //     "lastName": lastName,
+            //     "email": email,
+            //     "contactNo": contactNo,
+            //     "isTrainer": isTrainer,
+            //     "heardFrom": heardFrom,
+            //     "fitnessLevel": fitnessLevel,
+            //     "classPreference": classPreference
+            // }
+            // console.log(JSON.stringify(formData))
+            // var settings = {
+            //     "url": "http://stayfitapp.k8iwjdfpvp.us-east-2.elasticbeanstalk.com/application",
+            //     "method": "POST",
+            //     "headers": {
+            //         "Content-Type": "application/json"
+            //     },
+            //     "processData": false,
+            //     "data": JSON.stringify(formData)
+            // }
+
+            // $.ajax(settings).done(function(response) {
+            //     if (response == "OK") {
+            //         alert("Form submission successful.")
+            //         document.getElementById('fname').value = ''
+            //         document.getElementById('lname').value = ''
+            //         document.getElementById('email').value = ''
+            //         document.getElementById('contact').value = ''
+            //         document.getElementById('isTrainer').value = ''
+            //         document.getElementById('heardFrom').value = ''
+            //         document.getElementById('fitnessLevel').value = ''
+            //         document.getElementById('classPreference').value = ''
+            //     } else {
+            //         alert("An network error has occured.")
+            //     }
+            // });
+
         }
     }
 </script>
