@@ -15,16 +15,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script/script.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122845976-3"></script>
+    <!-- Global site tag (gtag.js) - Google Ads: 738000847 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-738000847"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-122845976-3');
+        gtag('config', 'AW-738000847');
     </script>
-
 </head>
 
 <body>
@@ -141,7 +139,6 @@
             alert("All fields are manadatory.")
             document.getElementById('fname').focus()
         } else {
-
             window.setTimeout(function () {
                 document.getElementById('fname').value = ''
                 document.getElementById('lname').value = ''
@@ -153,44 +150,6 @@
                 document.getElementById('classPreference').value = ''
                 alert("Thank you for your information.\n\nWe will get in touch with you soon.")
             }, 750);
-
-            // var formData = {
-            //     "firstName": firstName,
-            //     "lastName": lastName,
-            //     "email": email,
-            //     "contactNo": contactNo,
-            //     "isTrainer": isTrainer,
-            //     "heardFrom": heardFrom,
-            //     "fitnessLevel": fitnessLevel,
-            //     "classPreference": classPreference
-            // }
-            // console.log(JSON.stringify(formData))
-            // var settings = {
-            //     "url": "http://stayfitapp.k8iwjdfpvp.us-east-2.elasticbeanstalk.com/application",
-            //     "method": "POST",
-            //     "headers": {
-            //         "Content-Type": "application/json"
-            //     },
-            //     "processData": false,
-            //     "data": JSON.stringify(formData)
-            // }
-
-            // $.ajax(settings).done(function(response) {
-            //     if (response == "OK") {
-            //         alert("Form submission successful.")
-            //         document.getElementById('fname').value = ''
-            //         document.getElementById('lname').value = ''
-            //         document.getElementById('email').value = ''
-            //         document.getElementById('contact').value = ''
-            //         document.getElementById('isTrainer').value = ''
-            //         document.getElementById('heardFrom').value = ''
-            //         document.getElementById('fitnessLevel').value = ''
-            //         document.getElementById('classPreference').value = ''
-            //     } else {
-            //         alert("An network error has occured.")
-            //     }
-            // });
-
         }
     }
 </script>
